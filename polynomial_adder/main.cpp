@@ -6,8 +6,7 @@
 
 #include "Term.h"
 #include "Polynomial.h"
-#include <iostream>
-#include <string>
+
 
 
 Term extract_term(std::istringstream& input)
@@ -130,20 +129,11 @@ void test_doug()
 
 int main()
 {
-<<<<<<< HEAD
-	std::string variable = "I can't figure out how to run this";
-	if (variable != "Test")
-	{
-		std::cout << " Natalie is unsuccessfull in testing." << std::endl;
-	}
-	else
-		std::cout << "Testing is currently working" << std::endl;
 
-=======
 	test_doug();  // comment this out and put in your own to test something
-
+	// Testing updates
 	char c;
 	std::cin >> c;  // stop the window from closing
->>>>>>> master
+
 	return 0;
 }
