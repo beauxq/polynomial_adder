@@ -1,6 +1,8 @@
 #ifndef TERM_H_INCLUDED
 #define TERM_H_INCLUDED
 
+#include "Alt_iss.h"
+
 /*	notes:
 	coefficient and exponent
 	constructor has 2 parameters, coefficient and exponent (google ctor initialization list)
@@ -17,7 +19,7 @@ public:
 };
 
 // global function
-Term extract_term(std::istringstream& input);
+Term extract_term(Alt_iss& input);
 /**
 extracts one Term from an istringstream and leaves the istringstream pointing right after that Term
 input should only have + - * ^ digits letters

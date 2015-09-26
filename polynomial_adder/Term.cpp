@@ -1,12 +1,12 @@
-#include <sstream>
 #include <stdexcept>
 #include <cctype>  // isalpha
 
 #include "Term.h"
+#include "Alt_iss.h"  // alternate istringstream
 
 
 //global function
-Term extract_term(std::istringstream& input)
+Term extract_term(Alt_iss& input)
 {
 	/**
 	extracts one Term from an istringstream and leaves the istringstream pointing right after that Term
@@ -21,7 +21,7 @@ Term extract_term(std::istringstream& input)
 	bool number_was_read;
 
 	// check for something left to read in stream
-	if (!(input.tellg() > -1))
+	if (input.empty())
 		throw std::invalid_argument("nothing to read in stringstream");
 	// verify stream in "good" state
 	if (!input.good())
@@ -41,7 +41,7 @@ Term extract_term(std::istringstream& input)
 			coefficient = 1;
 		input.clear();  // clear error state
 
-		if (!(input.tellg() > -1))  // string ended with a "-" or "+"
+		if (input.empty())  // string ended with a "-" or "+"
 			// ("-" or "+" is the only thing I know of that would be
 			// taken out of an int read and still give fail)
 			throw std::invalid_argument("invalid polynomial string");
@@ -52,7 +52,7 @@ Term extract_term(std::istringstream& input)
 	}
 
 	// looking for variable with exponent
-	if ((!(input.tellg() > -1)) && number_was_read)  // if stream is empty, done parsing this term, don't need variable or exponent
+	if (input.empty() && number_was_read)  // if stream is empty, done parsing this term, don't need variable or exponent
 		return Term(coefficient, 0);  // example: 5 = 5x^0
 
 	// stream is not empty
@@ -67,7 +67,7 @@ Term extract_term(std::istringstream& input)
 	// let user put "*" between coefficient and variable
 	if (next_char == '*')
 	{
-		if (!(input.tellg() > -1))  // end with "*"
+		if (input.empty())  // end with "*"
 			throw std::invalid_argument("invalid polynomial string");
 		input >> next_char;
 	}
@@ -76,7 +76,7 @@ Term extract_term(std::istringstream& input)
 		throw std::invalid_argument("invalid polynomial string");
 
 	// else isalpha, is variable
-	if (!(input.tellg() > -1))  // empty, nothing left
+	if (input.empty())  // empty, nothing left
 		return Term(coefficient, 1);
 
 	// something after the variable
