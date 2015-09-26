@@ -12,10 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Polynomial.cpp" />
     <ClCompile Include="Term.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alt_iss.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Polynomial.h" />
     <ClInclude Include="Term.h" />
   </ItemGroup>
