@@ -16,4 +16,14 @@ public:
 	int exponent;
 };
 
+// global function
+Term extract_term(std::istringstream& input);
+/**
+extracts one Term from an istringstream and leaves the istringstream pointing right after that Term
+input should only have + - * ^ digits letters
+throws invalid_argument otherwise
+also throws invalid_argument for empty stream or not .good() stream
+all letters are taken as the same variable (3Y+2r = 3x+2x)
+*/
+
 #endif  // TERM_H_INCLUDED
