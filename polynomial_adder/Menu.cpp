@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <limits>  // numeric_limits (for cin.ignore)
 #include <string>
 #include <stdexcept>
 
@@ -8,7 +7,7 @@
 bool Menu::run()
 {
 	/* returns false for quit, true otherwise */
-	std::string choice("x");  // only look at first char of string
+	std::string choice("x");  // only look at first char of string (in case more than one char entered)
 
 	// valid choice loop
 	while ((choice[0] != '1') && (choice[0] != '2') && (choice[0] != 'q') && (choice[0] != 'Q'))
@@ -18,12 +17,12 @@ bool Menu::run()
 				  << "\n                          sum: " << (p1 + p2).str()
 				  << "\nQ. quit\n choice? ";
 		std::cin >> choice;
-		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // in case more than one char entered
 	}
 	if ((choice[0] == 'q') || (choice[0] == 'Q'))
 		return false;
 
 	// 1 or 2
+	// input polynomial
 	Polynomial temp;  // verify input before doing anything with p1 or p2
 	std::string input;
 

@@ -13,15 +13,15 @@ knows whether there's something left to read in the stream
 class Alt_iss : public std::istringstream
 {
 private:
-	size_t length;
+	const size_t LENGTH;
 
 public:
 	// default ctor
-	Alt_iss() : std::istringstream(), length(0) {}
+	Alt_iss() : std::istringstream(), LENGTH(0) {}
 	// string ctor
-	Alt_iss(const std::string& str_input) : std::istringstream(str_input), length(str_input.length()) {}
+	Alt_iss(const std::string& str_input) : std::istringstream(str_input), LENGTH(str_input.length()) {}
 
-	bool empty() { return ((tellg() < 0) || (tellg() >= length)); }
+	bool empty() { return ((tellg() < 0) || (tellg() >= LENGTH)); }
 };
 
 #endif  // ALT_ISS_H_INCLUDED
