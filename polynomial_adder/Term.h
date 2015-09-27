@@ -12,7 +12,7 @@
 class Term
 {
 public:
-	Term(int coef, int exp) : coefficient(coef), exponent(exp) {}
+	Term(const int& coef, const int& exp) : coefficient(coef), exponent(exp) {}
 
 	int coefficient;
 	int exponent;
