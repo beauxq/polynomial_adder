@@ -30,9 +30,12 @@ void test_doug()
 
 int main()
 {
-	test_doug();  // if you want to test something, comment this out and put in your own
-
+	//test_doug();  // if you want to test something, comment this out and put in your own
+	std::cout << "Daniel's Test" << std::endl;
+	
 	char c;
 	std::cin >> c;  // stop the window from closing, type a char and press enter
+
+	system("pause");
 	return 0;
 }
