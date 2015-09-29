@@ -7,8 +7,6 @@
 #include "Alt_iss.h"
 
 
-<<<<<<< HEAD
-
 Term extract_term(std::istringstream& input)
 {
 	/**
@@ -113,8 +111,7 @@ Term extract_term(std::istringstream& input)
 	}
 }
 
-=======
->>>>>>> master
+
 void test_doug()
 {
 	Term t(3, 4);
@@ -138,19 +135,12 @@ void test_doug()
 
 int main()
 {
-<<<<<<< HEAD
-=======
-	test_doug();  // if you want to test something, comment this out and put in your own
->>>>>>> master
 
 	test_doug();  // comment this out and put in your own to test something
 	// Testing updates
 	char c;
-<<<<<<< HEAD
-	std::cin >> c;  // stop the window from closing
 
-=======
 	std::cin >> c;  // stop the window from closing, type a char and press enter
->>>>>>> master
+
 	return 0;
 }
