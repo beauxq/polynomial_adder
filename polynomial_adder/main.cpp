@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
-#include <sstream>
-#include <stdexcept>
-#include <cctype>
 
 #include "Term.h"
 #include "Polynomial.h"
+#include "Menu.h"
+#include "Alt_iss.h"
 
 
+<<<<<<< HEAD
 
 Term extract_term(std::istringstream& input)
 {
@@ -113,27 +113,44 @@ Term extract_term(std::istringstream& input)
 	}
 }
 
+=======
+>>>>>>> master
 void test_doug()
 {
 	Term t(3, 4);
 	std::cout << t.exponent << std::endl;
 
-	std::istringstream ss("-x + 5 + x^2 - 10");
+	Alt_iss ss("5w-5x^-2+10-5y+z^2");
+	//Alt_iss ss("++3");  // this one should throw exception
+	//Alt_iss ss("-x+5+x^2-10");
+	//Alt_iss ss("7*f-2*k^10+18x");
 
-	while (ss)
+	while (!ss.empty())
 	{
 		t = extract_term(ss);
 		std::cout << t.coefficient << " " << t.exponent << std::endl;
+		std::cout << ss.str() << " " << ss.tellg() << std::endl;
 	}
+
+	Menu menu;
+	while (menu.run());  // empty statement
 }
 
 int main()
 {
+<<<<<<< HEAD
+=======
+	test_doug();  // if you want to test something, comment this out and put in your own
+>>>>>>> master
 
 	test_doug();  // comment this out and put in your own to test something
 	// Testing updates
 	char c;
+<<<<<<< HEAD
 	std::cin >> c;  // stop the window from closing
 
+=======
+	std::cin >> c;  // stop the window from closing, type a char and press enter
+>>>>>>> master
 	return 0;
 }
