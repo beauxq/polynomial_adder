@@ -5,9 +5,9 @@
 
 /*	notes:
 	coefficient and exponent
-	constructor has 2 parameters, coefficient and exponent (google ctor initialization list)
+	constructor has 2 parameters, coefficient and exponent (google ctor initialization list) ? 
 	overload > < //needs to be done
-	string representation	.str() function  example: returns string "3x^2" */ //needs to be done
+	string representation	.str() function  example: returns string "3x^2" */ 
 
 class Term
 {
