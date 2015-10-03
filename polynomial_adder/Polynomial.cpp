@@ -5,34 +5,38 @@
 #include "Polynomial.h"
 #include "Alt_iss.h"
 
+
 /*inlined function from polynomial.h
 std::string str() const { return Polynomial; }  
 string that actually print out the list
 */
 
 const Polynomial operator+ (const Polynomial& other)
-{ 
-	/* we compare and add polynomials?
-
-	add every term or item from the list and create a new list for the final polynomial string. 
+{
+	/*
+	add every term or item from the list and create a new list for the final polynomial
 	add term will be doing the comparisions for the individual terms based on exponents
-
-
-	
- compare exp of the first items of each list. 9list are already in order
-	 
-	 if they match == then add the constants
-	 if term1 > term2 then add it to the final_poly_list first
-	 if term2 > term1 then add it to the final_poly_list first.
-
-
-
 	*/
+	std::list<int> final_poly_list();
+	/*
+	while (int i = 0; i < list.size(); i++;)
+	
+		if (list1.exponent == some1.exponent)	// they match == then add the constants
+		{
+			int add_exp = list1.coefficient + list2.coefficien;
+		}
+		if (some.exponent > some1.exponent)	// term1 > term2 then add it to the final_poly_list first
+		{
+			final_poly_list<Term>* head = new Node<std::string>(some.exponent);
+		}
+		if (some.exponent < some1.exponent)	// term2 > term1 then add it to the final_poly_list first.
+		{
+			final_poly_list<Term>* head = new Node<std::string>(some1.exponent);
+		}*/
+		return Polynomial();
 	
 	
-	return Polynomial(); 
-}  
-
+}
 void Polynomial::parse(const std::string& input)
 {
 	// remove whitespace
@@ -46,7 +50,7 @@ void Polynomial::parse(const std::string& input)
 
 	// parse one term at a time
 	while (!inputss.empty())
-		add_term(extract_term(inputss));
+		insert_term(extract_term(inputss));
 	/*
 	string representation	.str() function  example: returns string "3x^2" needs to be done
 	take the list and put it in a string format
@@ -57,11 +61,10 @@ void Polynomial::parse(const std::string& input)
 	*/
 }
 
-void add_term(const Term& term) //taking terms inputed and creating one list
+void insert_term(const Term& term) //taking terms inputed and creating one list
 {
 /*
-/overload > < needs to be done
-
+/
  while counter != num_items in the list
  compare exp
 
