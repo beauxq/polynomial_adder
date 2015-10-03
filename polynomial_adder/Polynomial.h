@@ -17,9 +17,9 @@ class Polynomial
 {
 public:
 	std::string str() const { return "3x^2"; }  // placeholder for testing
-	const Polynomial operator+ (const Polynomial& other) { return Polynomial(); }  // placeholder
-	void parse(const std::string& input);
-	void add_term(const Term& term) {}  // {} placeholder
+	const Polynomial operator+ (const Polynomial& other) { return Polynomial(); }  // placeholder //needs to be done
+	void parse(const std::string& input); //done
+	void add_term(const Term& term) {}  // {} placeholder //needs to be done
 };
 
 #endif  // POLYNOMIAL_H_INCLUDED
