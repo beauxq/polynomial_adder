@@ -4,6 +4,7 @@
 
 #include "Polynomial.h"
 #include "Alt_iss.h"
+#include "Node"
 
 
 /*inlined function from polynomial.h
@@ -72,7 +73,41 @@ void insert_term(const Term& term) //taking terms inputed and creating one list
  if term1 > term2 then add it to the p1_list first
  if term2 > term1 then add it to the p1_list first.
 
- 
-
 */
+	Term *newNode;
+	newNode->coefficient = term.coefficient;
+	newNode->exponent = term.exponent;
+	newNode->next = NULL;
+	
+
+	/*while (term < *itr)
+
+		for (Term itr = list.begin(); itr != list.end(); itr++)
+		{
+			if (newNode->exponent == list[itr])
+			{
+
+				/*
+				if (term.exponent == itr->exponent)
+				{
+				itr->coefficient += term.coefficient;
+
+				if (itr->coefficient == 0)
+				{
+				// then remove this node from the list
+				}
+				}
+				else
+				{
+				// insert the term
+				}
+				
+			}
+			else if (newNode->exponent > list[itr])
+			{
+				//insert in front of
+			}
+			else //insert behind
+		}
+		*/
 }  
