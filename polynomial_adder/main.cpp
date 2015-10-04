@@ -35,4 +35,8 @@ int main()
 	char c;
 	std::cin >> c;  // stop the window from closing, type a char and press enter
 	return 0;
+
+	//I need some information for the overload operators.
+
+	Term Testing;
 }

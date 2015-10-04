@@ -16,6 +16,7 @@ public:
 	Term(const int& coef, const int& exp) : coefficient(coef), exponent(exp) {}
 	Term operator> (const Term& other);// { return other(); }  // needs to be done
 	//const Term operator< (const Term& other); // { return some(); }  // needs to be done
+	//needs default constructor
 	int coefficient;
 	int exponent;
 	std::list<int> poly_list();

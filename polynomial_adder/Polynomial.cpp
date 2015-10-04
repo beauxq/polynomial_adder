@@ -18,21 +18,30 @@ const Polynomial operator+ (const Polynomial& other)
 	add term will be doing the comparisions for the individual terms based on exponents
 	*/
 	std::list<int> final_poly_list();
-	/*
-	while (int i = 0; i < list.size(); i++;)
-	
-		if (list1.exponent == some1.exponent)	// they match == then add the constants
+	std::list<int> poly_list();
+	int i = 0;
+/*
+	while (i < poly_list().size())
+	{
+		
+		if (Term.exponent == Term.exponent)	// they match == then add the constants
 		{
-			int add_exp = list1.coefficient + list2.coefficien;
+		int add_exp = Term.coefficient + Term.coefficien;
 		}
-		if (some.exponent > some1.exponent)	// term1 > term2 then add it to the final_poly_list first
+		
+		if (Term.exponent > Term.exponent)	// term1 > term2 then add it to the final_poly_list first
 		{
-			final_poly_list<Term>* head = new Node<std::string>(some.exponent);
+		final_poly_list<Term>* head = new Node<std::string>(some.exponent);
 		}
-		if (some.exponent < some1.exponent)	// term2 > term1 then add it to the final_poly_list first.
+		if (Term.exponent < Term.exponent)	// term2 > term1 then add it to the final_poly_list first.
 		{
-			final_poly_list<Term>* head = new Node<std::string>(some1.exponent);
-		}*/
+		final_poly_list<Term>* head = new Node<std::string>(some1.exponent);
+		}
+		i++;
+
+		
+	}
+	*/
 		return Polynomial();
 	
 	
@@ -66,13 +75,25 @@ void insert_term(const Term& term) //taking terms inputed and creating one list
 /*
 /
  while counter != num_items in the list
- compare exp
+{
+	compare exp
 
- if they match == then add the constants
- if term1 > term2 then add it to the p1_list first
- if term2 > term1 then add it to the p1_list first.
+	 if they match == then add the constants (sample code below)
+	 if term1 > term2 then add it to the p1_list first
+	 if term2 > term1 then add it to the p1_list first.
 
- 
 
+ //after you find where the item in the list belongs.
+ 	if (Term.exponent == itr->exponent)	// they match == then add the constants
+		{
+			itr->coefficient += term.coefficient;
+			if (itr->coefficient == 0)
+			{
+				//remove the node from the list
+			}
+			else
+				int add_exp = Term.coefficient + Term.coefficien; //add the item into the list
+		}
+}
 */
 }  
