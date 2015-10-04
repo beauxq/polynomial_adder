@@ -13,9 +13,12 @@
 class Term
 {
 public:
+	// ctors
 	Term(const int& coef, const int& exp) : coefficient(coef), exponent(exp) {}
-	Term operator> (const Term& other);// { return other(); }  // needs to be done
-	//const Term operator< (const Term& other); // { return some(); }  // needs to be done
+	Term() : coefficient(0), exponent(0) {}
+
+	bool operator> (const Term& other);
+	bool operator< (const Term& other);
 	int coefficient;
 	int exponent;
 	std::list<int> poly_list();
