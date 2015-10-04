@@ -19,7 +19,7 @@ public:
 	std::string str() const { return "3x^2"; }  //string that actually print out the list
 	const Polynomial operator+ (const Polynomial& other) { return Polynomial(); }  // needs to be done
 	void parse(const std::string& input); //done
-	void add_term(const Term& term) {}  // {} comparision operatiors exponent
+	void insert_term(const Term& term) {}  // {} comparision operatiors exponent
 };
 
 #endif  // POLYNOMIAL_H_INCLUDED

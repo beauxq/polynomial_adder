@@ -5,6 +5,19 @@
 #include "Alt_iss.h"  // alternate istringstream
 
 
+Term operator> (Term& exponent, Term& list1) 
+{
+	Term result = exponent > list1;
+	return result; 
+} 
+
+Term operator< (Term& exponent, Term& list1)
+ {
+	 Term result = exponent > list1;
+	return result; 
+ }
+ 
+
 //global function
 Term extract_term(Alt_iss& input)
 {

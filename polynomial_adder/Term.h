@@ -1,11 +1,12 @@
 #ifndef TERM_H_INCLUDED
 #define TERM_H_INCLUDED
+#include <list>
 
 #include "Alt_iss.h"
 
 /*	notes:
 	coefficient and exponent
-	constructor has 2 parameters, coefficient and exponent (google ctor initialization list) ? 
+	constructor has 2 parameters, coefficient and exponent (google ctor initialization list) 
 	overload > < //needs to be done
 	string representation	.str() function  example: returns string "3x^2" */ 
 
@@ -13,9 +14,12 @@ class Term
 {
 public:
 	Term(const int& coef, const int& exp) : coefficient(coef), exponent(exp) {}
-
+	Term operator> (const Term& other);// { return other(); }  // needs to be done
+	//const Term operator< (const Term& other); // { return some(); }  // needs to be done
 	int coefficient;
 	int exponent;
+	std::list<int> poly_list();
+
 };
 
 // global function
