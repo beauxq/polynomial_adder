@@ -11,7 +11,7 @@ std::string str() const { return Polynomial; }
 string that actually print out the list
 */
 
-const Polynomial operator+ (const Polynomial& other)
+const Polynomial Polynomial::operator+ (const Polynomial& other)
 {
 	/*
 	add every term or item from the list and create a new list for the final polynomial

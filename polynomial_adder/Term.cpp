@@ -5,17 +5,15 @@
 #include "Alt_iss.h"  // alternate istringstream
 
 
-Term operator> (Term& exponent, Term& list1) 
+bool Term::operator> (const Term& other) 
 {
-	Term result = exponent > list1;
-	return result; 
+	return exponent > other.exponent;
 } 
 
-Term operator< (Term& exponent, Term& list1)
- {
-	 Term result = exponent > list1;
-	return result; 
- }
+bool Term::operator< (const Term& other)
+{
+	return exponent > other.exponent; 
+}
  
 
 //global function
