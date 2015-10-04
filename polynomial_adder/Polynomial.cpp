@@ -83,9 +83,7 @@ void insert_term(const Term& term) //taking terms inputed and creating one list
 	 if term1 > term2 then add it to the p1_list first
 	 if term2 > term1 then add it to the p1_list first.
 
-<<<<<<< HEAD
-
- //after you find where the item in the list belongs.
+//after you find where the item in the list belongs.
  	if (Term.exponent == itr->exponent)	// they match == then add the constants
 		{
 			itr->coefficient += term.coefficient;
@@ -97,8 +95,7 @@ void insert_term(const Term& term) //taking terms inputed and creating one list
 				int add_exp = Term.coefficient + Term.coefficien; //add the item into the list
 		}
 }
-=======
->>>>>>> daniel-7.31
+
 */
 	Term *newNode;
 	newNode->coefficient = term.coefficient;
