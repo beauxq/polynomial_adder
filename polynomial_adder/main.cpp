@@ -10,7 +10,7 @@
 void test_doug()
 {
 	Term t(3, 4);
-	std::cout << t.exponent << std::endl;
+	std::cout << t.get_exponent() << ' ' << t.str() << std::endl;
 
 	Alt_iss ss("5w-5x^-2+10-5y+z^2");
 	//Alt_iss ss("++3");  // this one should throw exception
@@ -20,8 +20,8 @@ void test_doug()
 	while (!ss.empty())
 	{
 		t = extract_term(ss);
-		std::cout << t.coefficient << " " << t.exponent << std::endl;
-		std::cout << ss.str() << " " << ss.tellg() << std::endl;
+		std::cout << t.str() << std::endl;
+		std::cout << ss.str() << ' ' << ss.tellg() << std::endl;
 	}
 
 	Menu menu;
@@ -30,13 +30,8 @@ void test_doug()
 
 int main()
 {
-	test_doug();  // if you want to test something, comment this out and put in your own
+	Menu menu;
+	while (menu.run());  // empty statement
 
-	char c;
-	std::cin >> c;  // stop the window from closing, type a char and press enter
 	return 0;
-
-	//I need some information for the overload operators.
-
-	Term Testing;
 }

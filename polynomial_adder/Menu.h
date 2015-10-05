@@ -8,7 +8,7 @@ class Menu
 private:
 	Polynomial p1, p2;
 public:
-	bool run();
+	bool run();  // returns false for quit, true otherwise
 };
 
 #endif  // MENU_H_INCLUDED

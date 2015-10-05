@@ -4,133 +4,85 @@
 
 #include "Polynomial.h"
 #include "Alt_iss.h"
-#include "Node"
 
 
-/*inlined function from polynomial.h
-std::string str() const { return Polynomial; }  
-string that actually print out the list
-*/
-
-const Polynomial Polynomial::operator+ (const Polynomial& other)
+std::string Polynomial::str() const
 {
-	/*
-	add every term or item from the list and create a new list for the final polynomial
-	add term will be doing the comparisions for the individual terms based on exponents
-	*/
-	std::list<int> final_poly_list();
-	std::list<int> poly_list();
-	int i = 0;
-/*
-	while (i < poly_list().size())
-	{
-		
-		if (Term.exponent == Term.exponent)	// they match == then add the constants
-		{
-		int add_exp = Term.coefficient + Term.coefficien;
-		}
-		
-		if (Term.exponent > Term.exponent)	// term1 > term2 then add it to the final_poly_list first
-		{
-		final_poly_list<Term>* head = new Node<std::string>(some.exponent);
-		}
-		if (Term.exponent < Term.exponent)	// term2 > term1 then add it to the final_poly_list first.
-		{
-		final_poly_list<Term>* head = new Node<std::string>(some1.exponent);
-		}
-		i++;
+	if (the_data.empty())
+		return "";
 
+	// else not empty
+	std::list<Term>::const_iterator itr = the_data.begin();
+
+	std::string to_return = itr->str();  // the first Term is handled differently because it doesn't need + or - before it
+	++itr;
+	// now at the second Term
+	while (itr != the_data.end())
+	{
+		if (itr->str()[0] != '-')  // make sure there's + or -
+			to_return += '+';
+
+		to_return += itr->str();
 		
+		++itr;
 	}
-	*/
-		return Polynomial();
-	
-	
+
+	return to_return;
 }
+
+const Polynomial Polynomial::operator+ (Polynomial other) const
+{
+	// pass other by value to make a copy of it
+
+	// add everything in this polynomial to the copy of other
+	for (std::list<Term>::const_iterator itr = the_data.begin(); itr != the_data.end(); ++itr)
+		other.insert_term(*itr);
+
+	return other;
+}
+
 void Polynomial::parse(const std::string& input)
 {
 	// remove whitespace
 	std::ostringstream remove_ws;
 
-	for (std::string::const_iterator it = input.begin(); it != input.end(); ++it)
-		if (!isspace(*it))
-			remove_ws << *it;
+	for (std::string::const_iterator itr = input.begin(); itr != input.end(); ++itr)
+		if (!isspace(*itr))
+			remove_ws << *itr;
 
 	Alt_iss inputss(remove_ws.str());
 
 	// parse one term at a time
 	while (!inputss.empty())
 		insert_term(extract_term(inputss));
-	/*
-	string representation	.str() function  example: returns string "3x^2" needs to be done
-	take the list and put it in a string format
-
-
-	str terms_of_poly = items in the list
-	return (finished polynomial)
-	*/
 }
 
-void insert_term(const Term& term) //taking terms inputed and creating one list
+void Polynomial::insert_term(const Term& term)
 {
-/*
-/
- while counter != num_items in the list
-{
-	compare exp
+	/** this will insert (in order) if the term with matching exponent isn't already there,
+		and add to the term if it's already there,
+		then it will delete the term from the_data if the coefficient is zero */
 
-	 if they match == then add the constants (sample code below)
-	 if term1 > term2 then add it to the p1_list first
-	 if term2 > term1 then add it to the p1_list first.
+	if (term.coefficient == 0)  // adding zero doesn't do anything
+		return;
+	if (the_data.empty())  // inserting in empty list
+		return the_data.push_front(term);
 
-//after you find where the item in the list belongs.
- 	if (Term.exponent == itr->exponent)	// they match == then add the constants
-		{
-			itr->coefficient += term.coefficient;
-			if (itr->coefficient == 0)
-			{
-				//remove the node from the list
-			}
-			else
-				int add_exp = Term.coefficient + Term.coefficien; //add the item into the list
-		}
+	std::list<Term>::iterator itr = the_data.begin();
+
+	while ((itr != the_data.end()) && (term < *itr))  // short circuit to not dereference end
+		++itr;
+	// now itr is at the correct insert point
+	if (itr == the_data.end())
+		return the_data.push_back(term);
+
+ 	if (term.exponent == itr->exponent)	// they match == then add the coefficients
+	{
+		itr->coefficient += term.coefficient;
+		if (itr->coefficient == 0)  // don't keep zero coefficients in the list
+			the_data.erase(itr);
+		return;
+	}
+	// else exponents not equal - insert term here
+	the_data.insert(itr, term);
 }
-
-*/
-	Term *newNode;
-	newNode->coefficient = term.coefficient;
-	newNode->exponent = term.exponent;
-	newNode->next = NULL;
-	
-
-	/*while (term < *itr)
-
-		for (Term itr = list.begin(); itr != list.end(); itr++)
-		{
-			if (newNode->exponent == list[itr])
-			{
-
-				/*
-				if (term.exponent == itr->exponent)
-				{
-				itr->coefficient += term.coefficient;
-
-				if (itr->coefficient == 0)
-				{
-				// then remove this node from the list
-				}
-				}
-				else
-				{
-				// insert the term
-				}
-				
-			}
-			else if (newNode->exponent > list[itr])
-			{
-				//insert in front of
-			}
-			else //insert behind
-		}
-		*/
-}  

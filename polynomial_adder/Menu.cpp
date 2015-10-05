@@ -6,17 +6,18 @@
 
 bool Menu::run()
 {
-	/* returns false for quit, true otherwise */
+	/** returns false for quit, true otherwise */
 	std::string choice("x");  // only look at first char of string (in case more than one char entered)
+	std::string menu_display_string = "\n1. change/input polynomial 1   " + p1.str()
+									+ "\n2. change/input polynomial 2   " + p2.str()
+									+ "\n                          sum: " + (p1 + p2).str()
+									+ "\nQ. quit\n choice? ";
 
 	// valid choice loop
 	while ((choice[0] != '1') && (choice[0] != '2') && (choice[0] != 'q') && (choice[0] != 'Q'))
 	{
-		std::cout << "\n1. change/input polynomial 1   " << p1.str()
-				  << "\n2. change/input polynomial 2   " << p2.str()
-				  << "\n                          sum: " << (p1 + p2).str()
-				  << "\nQ. quit\n choice? ";
-		std::cin >> choice;
+		std::cout << menu_display_string;
+		std::getline(std::cin, choice);
 	}
 	if ((choice[0] == 'q') || (choice[0] == 'Q'))
 		return false;
@@ -27,7 +28,7 @@ bool Menu::run()
 	std::string input;
 
 	std::cout << "new polynomial: ";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	try
 	{
 		temp.parse(input);
