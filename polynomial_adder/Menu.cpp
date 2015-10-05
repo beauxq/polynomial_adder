@@ -3,14 +3,19 @@
 #include <stdexcept>
 
 #include "Menu.h"
+#include "Polynomial.h"
 
 bool Menu::run()
 {
 	/** returns false for quit, true otherwise */
+
+
 	std::string choice("x");  // only look at first char of string (in case more than one char entered)
+	Polynomial sum = p1 + p2;  // stores the sum of the two polynomials
+
 	std::string menu_display_string = "\n1. change/input polynomial 1   " + p1.str()
 									+ "\n2. change/input polynomial 2   " + p2.str()
-									+ "\n                          sum: " + (p1 + p2).str()
+									+ "\n                          sum: " + sum.str()
 									+ "\nQ. quit\n choice? ";
 
 	// valid choice loop
