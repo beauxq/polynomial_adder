@@ -1,28 +1,31 @@
 #ifndef TERM_H_INCLUDED
 #define TERM_H_INCLUDED
-#include <list>
+
+#include <string>
 
 #include "Alt_iss.h"
 
-/*	notes:
-	coefficient and exponent
-	constructor has 2 parameters, coefficient and exponent (google ctor initialization list) 
-	overload > < //needs to be done
-	string representation	.str() function  example: returns string "3x^2" */ 
-
 class Term
 {
+	friend class Polynomial;  // to add one coefficient to another when exponents are the same
+private:
+	int coefficient;
+	int exponent;
 public:
 	// ctors
 	Term(const int& coef, const int& exp) : coefficient(coef), exponent(exp) {}
 	Term() : coefficient(0), exponent(0) {}
 
-	bool operator> (const Term& other);
-	bool operator< (const Term& other);
-	int coefficient;
-	int exponent;
-	std::list<int> poly_list();
+	// operator> operator< based only on exponent
+	bool operator> (const Term& other) const;
+	bool operator< (const Term& other) const;
 
+	// getters
+	int get_coefficient() const;
+	int get_exponent() const;
+	
+	std::string str() const;
+	/** string representation	example: returns string "3x^2" */
 };
 
 // global function

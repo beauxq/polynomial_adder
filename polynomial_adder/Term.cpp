@@ -1,20 +1,59 @@
 #include <stdexcept>
 #include <cctype>  // isalpha
+#include <string>
+#include <sstream>  // only for ostringstream, not istringstream
 
 #include "Term.h"
 #include "Alt_iss.h"  // alternate istringstream
 
 
-bool Term::operator> (const Term& other) 
+bool Term::operator> (const Term& other) const
 {
 	return exponent > other.exponent;
 } 
 
-bool Term::operator< (const Term& other)
+bool Term::operator< (const Term& other) const
 {
-	return exponent > other.exponent; 
+	return exponent < other.exponent;
 }
- 
+
+int Term::get_coefficient() const
+{
+	return coefficient;
+}
+
+int Term::get_exponent() const
+{
+	return exponent;
+}
+
+std::string Term::str() const
+{
+	if (coefficient == 0)  // this should never happen for this program, but just in case any other usage allows it
+		return "0";
+
+	std::ostringstream to_return;
+
+	// handle -1 and 1 where no coefficient is displayed
+	if ((coefficient == -1) && (exponent != 0))
+		to_return << '-';
+	else if ((coefficient != 1) || (exponent == 0))
+		to_return << coefficient;
+
+	if (exponent == 0)
+		return to_return.str();
+
+	// else exponent != 0
+	to_return << 'x';
+
+	if (exponent == 1)  // no exponent is displayed
+		return to_return.str();
+
+	// else exponent != 1
+	to_return << '^' << exponent;
+
+	return to_return.str();
+}
 
 //global function
 Term extract_term(Alt_iss& input)

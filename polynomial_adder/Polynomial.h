@@ -2,25 +2,28 @@
 #define POLYNOMIAL_H_INCLUDED
 
 #include <string>
+#include <list>
 
 #include "Term.h"
 
-/*	notes:
-	list of Terms (use c++ built-in  std::list<Term> )
-	add_term (this will insert (in order) if the term with matching exponent isn't already there,
-		and add to the term if it's already there,
-		then it will delete the term if the coefficient is zero)
-	overload operator+ to add two polynomials (just make a new Polynomial and add_term for every term in both of the originals)
-	*/
-
 class Polynomial
 {
+private:
+	std::list<Term> the_data;
 public:
-	std::string str() const { return "3x^2"; }  //string that actually print out the list
-	const Polynomial operator+ (const Polynomial& other);
-	//needs default constructor?
-	void parse(const std::string& input); //done
-	void insert_term(const Term& term) {}  // {} comparision operators exponent
+	std::string str() const;
+	/** string representation of the polynomial */
+
+	const Polynomial operator+ (Polynomial other) const;
+	/** sum of two polynomials */
+
+	void parse(const std::string& input);
+	/** removes whitespace and then calls global function extract_term (declared in Term.h) for each term */
+
+	void insert_term(const Term& term);
+	/** this will insert (in order) if the term with matching exponent isn't already there,
+		and add to the term if it's already there,
+		then it will delete the term from the_data if the coefficient is zero */
 };
 
 #endif  // POLYNOMIAL_H_INCLUDED
