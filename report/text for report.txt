@@ -1,0 +1,22 @@
+I don't know whether this is too much or not enough information for the report.
+
+Remember, you can change the order and organization if you want. This is kind of just rambling.
+
+The Alt_iss class is to add a feature to the std::istringstream class to easily know whether there is something left in the stream to read. It does this by defining a constant with the length of the string when the stream is constructed using the data passed to the constructor. Then the empty function compares the cursor position with the length of the data.
+
+
+The Menu class holds the two polynomials to be added. The run function has all the code to display the menu and get input from the user. It returns a boolean to make it easy to loop until the user chooses the quit option.
+
+
+The Term class has the private member variables coefficient and exponent. The reason the exponent needs to be private is because a change in an exponent that is in the Polynomial class could put the list of Terms out of order when this list should always be in order. The reason the coefficient needs to be private is that it could be changed to zero and stay in the list, when the Polynomial is designed to not have any zero coefficients.
+The "greater than" and "less than" operators are based on the exponent for sorting the Polynomial list.
+
+The main parsing function, extract_term is a global function defined with the Term class implementation. It extracts only one term from the input stream, and thus is designed to be called multiple times to extract multiple terms. A flow chart was made to keep track of what input is valid. It throws exceptions with descriptions of the problems found with the input so that they can be displayed to the user in the user interface. Efficiency is O(n) on the size of the term found in the input.
+It was not in the project requirements to allow the multiplication symbol "*", but it is allowed because otherwise it might be annoying to a user who is used to typing in expressions a certain way.
+
+
+The Polynomial class keeps a list of the Terms. This list should always be in order and should never have any zero coefficients.
+The str function utilizes the str function from the Term class. The first Term is handled differently because it doesn't need + or - before it. Then it iterates through the rest of the list making sure there's a + or - between each term. Efficieny is O(n) on the number of Terms in the list.
+<operator+ paragraph already in the report document>
+The parse member function first removes all whitespace from the input. Allowing whitespace wasn't required for the project, but it is allowed because otherwise it might be annoying to a user who is used to typing in expressions a certain way. Then it calls the extract_term function multiple times until the input has nothing left to read, or until the extract_term function throws an exception (the exception will be passed along to the caller of parse). Efficiency is O(n) on the size of the input.
+The insert_term function iterates through the list to find the insertion point for the term. When it's found it is either the case that the term will be added to an already existing term (if the exponents are equal) or the term will be inserted. If the term is added to an existing term, it is checked to see if the resulting coefficient is zero, and if so, it is removed from the list. Efficiency is O(n) on the size of the list.
