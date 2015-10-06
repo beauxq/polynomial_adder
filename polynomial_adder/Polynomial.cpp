@@ -30,15 +30,42 @@ std::string Polynomial::str() const
 	return to_return;
 }
 
-const Polynomial Polynomial::operator+ (Polynomial other) const
+const Polynomial Polynomial::operator+ (const Polynomial& other) const
 {
-	// pass other by value to make a copy of it
+	// this merge is like merge of "merge sort"
+	Polynomial to_return;
 
-	// add everything in this polynomial to the copy of other
-	for (std::list<Term>::const_iterator itr = the_data.begin(); itr != the_data.end(); ++itr)
-		other.insert_term(*itr);
+	std::list<Term>::const_reverse_iterator itr_this = the_data.rbegin();
+	std::list<Term>::const_reverse_iterator itr_other = other.the_data.rbegin();
 
-	return other;
+	// insert the lowest Term in both lists
+	// insert_term will always find insertion point at head, so all calls to insert_term in this function are O(1)
+	while ((itr_this != the_data.rend()) && (itr_other != other.the_data.rend()))
+	{
+		if (*itr_this < *itr_other)
+		{
+			to_return.insert_term(*itr_this);
+			++itr_this;
+		}
+		else  // this >= other
+		{
+			to_return.insert_term(*itr_other);
+			++itr_other;
+		}
+	}
+	// one of the iterators is at the rend
+	while (itr_this != the_data.rend())
+	{
+		to_return.insert_term(*itr_this);
+		++itr_this;
+	}
+	while (itr_other != other.the_data.rend())
+	{
+		to_return.insert_term(*itr_other);
+		++itr_other;
+	}
+
+	return to_return;
 }
 
 void Polynomial::parse(const std::string& input)
