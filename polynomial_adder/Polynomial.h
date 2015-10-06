@@ -14,7 +14,7 @@ public:
 	std::string str() const;
 	/** string representation of the polynomial */
 
-	const Polynomial operator+ (Polynomial other) const;
+	const Polynomial operator+ (const Polynomial& other) const;
 	/** sum of two polynomials */
 
 	void parse(const std::string& input);
