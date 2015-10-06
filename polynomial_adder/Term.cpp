@@ -72,7 +72,7 @@ Term extract_term(Alt_iss& input)
 
 	// check for something left to read in stream
 	if (input.empty())
-		throw std::invalid_argument("nothing to read in stringstream");
+		throw std::invalid_argument("nothing to read");
 	// verify stream in "good" state
 	if (!input.good())
 		throw std::invalid_argument("stream not in \"good\" state");
@@ -94,11 +94,11 @@ Term extract_term(Alt_iss& input)
 		if (input.empty())  // string ended with a "-" or "+"
 			// ("-" or "+" is the only thing I know of that would be
 			// taken out of an int read and still give fail)
-			throw std::invalid_argument("invalid polynomial string");
+			throw std::invalid_argument("polynomial can't end with + or -");
 
 		// if there was no number, then there has to be a variable
 		if (!isalpha(input.peek()))
-			throw std::invalid_argument("invalid polynomial string");
+			throw std::invalid_argument("missing coefficient or variable");
 	}
 
 	// looking for variable with exponent
@@ -118,12 +118,12 @@ Term extract_term(Alt_iss& input)
 	if (next_char == '*')
 	{
 		if (input.empty())  // end with "*"
-			throw std::invalid_argument("invalid polynomial string");
+			throw std::invalid_argument("polynomial can't end with *");
 		input >> next_char;
 	}
 	// this must go right after the "*"
 	if (!isalpha(next_char))  // variable is only valid possibility remaining
-		throw std::invalid_argument("invalid polynomial string");
+		throw std::invalid_argument(std::string("no variable found where needed at: ") + next_char);
 
 	// else isalpha, is variable
 	if (input.empty())  // empty, nothing left
@@ -138,12 +138,12 @@ Term extract_term(Alt_iss& input)
 	}
 
 	if (next_char != '^')  // this is the only valid possibility left
-		throw std::invalid_argument("invalid polynomial string");
+		throw std::invalid_argument(std::string("invalid character: ") + next_char);
 	// else next_char == '^'
 	// now the exponent must come next
 	input >> exponent;
 	if (input.fail())  // exponent didn't come next
-		throw std::invalid_argument("invalid polynomial string");
+		throw std::invalid_argument("no number where exponent was needed");
 
 	return Term(coefficient, exponent);
 }
