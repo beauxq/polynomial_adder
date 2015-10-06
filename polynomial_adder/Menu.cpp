@@ -43,9 +43,9 @@ bool Menu::run()
 		else  // choice[0] == '2'
 			p2 = temp;
 	}
-	catch (std::invalid_argument)
+	catch (std::invalid_argument err)
 	{
-		std::cout << "invalid polynomial - use only + - * ^ digits letters\n";
+		std::cout << "invalid polynomial - " << err.what() << std::endl;
 	}
 
 	return true;
