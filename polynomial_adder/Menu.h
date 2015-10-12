@@ -7,6 +7,8 @@ class Menu
 {
 private:
 	Polynomial p1, p2;
+
+	void input_polynomial(const bool& for_p2);
 public:
 	bool run();  // returns false for quit, true otherwise
 };
