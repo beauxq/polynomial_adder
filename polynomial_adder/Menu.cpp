@@ -5,12 +5,13 @@
 #include "Menu.h"
 #include "Polynomial.h"
 
-void Menu::input_polynomial(const bool& for_p2)
+// static because it doesn't use any members of Menu
+void Menu::input_polynomial(Polynomial& which_polynomial)
 {
-	/** gets a Polynomial from std::cin and stores it according to the parameter 
-		if it is not for_p2 then it is for p1 */
+	/** gets a Polynomial from std::cin and stores it in the parameter
+		(if there's a problem with input, doesn't change parameter) */
 
-	Polynomial temp;  // verify input before doing anything with p1 or p2
+	Polynomial temp;  // verify input before doing anything with parameter
 	std::string input;
 
 	std::cout << "new polynomial: ";
@@ -20,10 +21,7 @@ void Menu::input_polynomial(const bool& for_p2)
 	{
 		temp.parse(input);
 
-		if (for_p2)
-			p2 = temp;
-		else  // not for_p2
-			p1 = temp;
+		which_polynomial = temp;
 	}
 	catch (std::invalid_argument err)
 	{
@@ -56,10 +54,10 @@ bool Menu::run()
 	case 'Q':
 		return false;
 	case '1':
-		input_polynomial(0);
+		input_polynomial(p1);
 		return true;
 	case '2':
-		input_polynomial(1);
+		input_polynomial(p2);
 	default:
 		return true;
 	}
